@@ -9,56 +9,95 @@
     :root{--bg:#f5f6fa;--card:#ffffff;--accent:#2b6cb0;--muted:#6b7280}
     *{box-sizing:border-box}
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#1a1a1a}
-    .wrap{max-width:1000px;margin:0 auto;padding:20px}
+    .wrap{max-width:1100px;margin:0 auto;padding:20px}
     header{text-align:center;padding:40px 20px;background:linear-gradient(135deg,var(--accent),#4c9be8);color:#fff;border-radius:0 0 20px 20px}
-    header h1{margin:0;font-size:2rem}
+    header h1{margin:0;font-size:2.2rem}
     header p{font-size:1.1rem;margin-top:10px}
     section{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08);margin-top:20px}
-    section h2{color:var(--accent)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:15px}
+    section h2{color:var(--accent);margin-bottom:15px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px}
     .card{background:var(--bg);padding:15px;border-radius:10px}
+    img{max-width:100%;border-radius:10px;display:block;margin-top:10px}
     footer{margin-top:30px;text-align:center;font-size:0.9rem;color:var(--muted)}
-    .btn{display:inline-block;padding:10px 14px;margin-top:10px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none}
     ul{list-style:none;padding:0}
     ul li{margin:6px 0}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:10px}
+    .gallery img{width:100%;height:auto;border-radius:8px}
   </style>
 </head>
 <body>
   <div class="wrap">
 
+    <!-- EN-TÊTE -->
     <header>
       <h1>Eglise CEP-ZOE d'Argenteuil</h1>
-      <p>Une mission internationale avec pour objectif de rassembler et de former des disciples pour le royaume.</p>
+      <p>Nous sommes une mission internationale avec pour objectif de rassembler et de former des disciples pour le royaume.</p>
     </header>
 
+    <!-- NOS SECTIONS -->
     <section>
       <h2>Nos sections</h2>
       <div class="grid">
-        <div class="card"><h3>Nos  horaires de cultes</h3><p>Nous nous réunissons ordinairement à trois moments de de la semaine. Nous avons deux cultes du dimanche 9h00-11h30 puis 12h30-14h30,ensuite le jeûne Mercredi: 9H-12h00 et enfin la veillée de nuit 21h1h00 AM.</p></div>
-        <div class="card"><h3>Nos membres</h3><p>Une famille spirituelle engagée et accueillante.</p></div>
-
-        <div class="card"><h3>Messages encourageants</h3><p>Des enseignements et méditations pour votre foi.</p></div>
-        <div class="card"><h3>Nouveaux croyants</h3><p>Accompagnement et formation pour grandir dans la foi.</p></div>
-        <div class="card"><h3>À propos de nous</h3><p>Notre mission et nos valeurs au service du Royaume.</p></div>
+        <div class="card">
+          <h3>Nos cultes</h3>
+          <p>Découvrez nos rendez-vous hebdomadaires de prière et d’adoration.</p>
+          <img src="culte.jpg" alt="Photo du culte">
+        </div>
+        <div class="card">
+          <h3>Nos membres</h3>
+          <p>Une famille spirituelle engagée et accueillante.</p>
+          <img src="membres.jpg" alt="Photo des membres">
+        </div>
+        <div class="card">
+          <h3>À propos de nous</h3>
+          <p>Notre mission et nos valeurs au service du Royaume.</p>
+          <img src="apropos.jpg" alt="Notre église">
+        </div>
+        <div class="card">
+          <h3>Messages encourageants</h3>
+          <p>Des enseignements et méditations pour votre foi.</p>
+          <img src="message.jpg" alt="Message biblique">
+        </div>
+        <div class="card">
+          <h3>Nouveaux croyants</h3>
+          <p>Accompagnement et formation pour grandir dans la foi.</p>
+          <img src="nouveaux.jpg" alt="Nouveaux croyants">
+        </div>
       </div>
     </section>
 
+    <!-- GALERIE PHOTO -->
+    <section>
+      <h2>Galerie photos</h2>
+      <p>Voici quelques moments forts de notre église :</p>
+      <div class="gallery">
+        <img src="photo1.jpg" alt="Photo 1">
+        <img src="photo2.jpg" alt="Photo 2">
+        <img src="photo3.jpg" alt="Photo 3">
+        <img src="photo4.jpg" alt="Photo 4">
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section>
       <h2>Contact</h2>
       <ul>
         <li><strong>Téléphone :</strong> 06 61 88 07 54</li>
         <li><strong>Email :</strong> <a href="mailto:secretariat.cepzoe@gmail.com">secretariat.cepzoe@gmail.com</a></li>
-        <li><strong>Facebook :</strong> <a href="https://facebook.com/cepzoe" target="_blank">cep zoe</a></li>
+        <li><strong>Facebook :</strong> <a href="https://facebook.com/cepzoedargenteuil" target="_blank">cep zoe</a></li>
         <li><strong>YouTube :</strong> <a href="https://youtube.com/@cepzoéofficiel" target="_blank">cep zoé officiel</a></li>
         <li><strong>TikTok :</strong> <a href="https://tiktok.com/@cepzoe_argenteuil" target="_blank">@cepzoe_argenteuil</a></li>
       </ul>
     </section>
 
+    <!-- PIED DE PAGE -->
     <footer>
       © <span id="year"></span> Eglise CEP-ZOE d'Argenteuil — Tous droits réservés
     </footer>
   </div>
 
-  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear()
+  </script>
 </body>
 </html>
