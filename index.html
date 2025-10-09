@@ -94,13 +94,22 @@
     @media (max-width: 768px) {
       .gallery img {
         width: 100%;
-      }
-    }
-  /* Espace entre l'en-tête et la barre de navigation */
-.main-header {
-  margin-bottom: 10px;
+     
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.2); /* semi-transparent clair */
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  padding: 10px 0;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s ease;
 }
 </style>
+  
 </head>
 
 <body>
