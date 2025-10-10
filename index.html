@@ -1,116 +1,122 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eglise CEP-ZOE d'Argenteuil</title>
-  <meta name="description" content="Mission internationale - Disciples pour le royaume" />
+  <title>CEP-ZOE Argenteuil</title>
   <style>
+    /* --- Styles généraux --- */
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f7f9f9;
-      color: #333;
-    }
-
-    /* --- BARRE DE NAVIGATION FLOTTANTE --- */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-      padding: 12px 0;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .navbar ul {
-      list-style: none;
+      font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #fafafa;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* --- Barre de navigation --- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 80, 70, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
       display: flex;
       gap: 25px;
+      margin: 0;
+      padding: 0;
     }
 
-    .navbar li {
-      display: inline-block;
-    }
-
-    .navbar a {
+    nav ul li a {
       text-decoration: none;
-      color: #004d40;
-      font-weight: bold;
-      font-size: 1em;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: all 0.3s ease;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s, border-bottom 0.3s;
     }
 
-    .navbar a:hover {
-      background-color: rgba(1, 121, 111, 0.1);
-      color: #01796F;
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #FFD700;
+      border-bottom: 2px solid #FFD700;
     }
 
-    .navbar a.active {
-      border-bottom: 3px solid #FFD700;
-      color: #01796F;
+    /* --- Menu hamburger --- */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
     }
 
-    /* --- EN-TÊTE PRINCIPALE --- */
-    header.main-header {
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    /* --- En-tête --- */
+    header {
       background: linear-gradient(135deg, #01796F, #FFD700);
       color: white;
       text-align: center;
-      padding: 100px 20px 40px; /* ↑ espace ajouté pour compenser la nav */
-      border-radius: 0 0 15px 15px;
-      margin-top: 60px; /* décalage sous la nav */
+      padding: 120px 20px 60px;
+      border-radius: 0 0 20px 20px;
+      margin-top: 60px;
     }
 
-    header.main-header h1 {
-      margin: 0;
-      font-size: 2em;
+    header h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
     }
 
-    header.main-header p {
-      font-size: 1.2em;
-      margin-top: 10px;
-    }
-
-    /* --- IMAGE D'EN-TÊTE --- */
-    .banner {
-      text-align: center;
-      margin-top: 70px; /* pour éviter d'être cachée par la nav */
-    }
-
-    .banner img {
-      width: 100%;
-      max-height: 400px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    /* --- CONTENEUR PRINCIPAL --- */
+    /* --- Conteneur principal --- */
     .container {
       max-width: 1100px;
-      margin: 0 auto;
-      padding: 20px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
     section {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
-      padding: 20px;
+      margin-bottom: 60px;
     }
 
-    section h2, section h3 {
+    section h2 {
       color: #01796F;
+      border-bottom: 2px solid #FFD700;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
     }
 
     .card img {
@@ -119,79 +125,73 @@
       margin-top: 10px;
     }
 
-    /* --- GALERIE --- */
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .gallery img {
-      width: 48%;
-      border-radius: 8px;
-    }
-
-    /* --- SECTION DON --- */
-    #don {
+    /* --- Section Faire un don --- */
+    .don-section {
       text-align: center;
       background: linear-gradient(135deg, #01796F, #FFD700);
       color: white;
-      padding: 40px 20px;
+      padding: 50px 20px;
       border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    #don a {
-      display: inline-block;
-      background-color: white;
+    .don-section a {
+      background: white;
       color: #01796F;
-      padding: 12px 25px;
-      border-radius: 8px;
-      font-weight: bold;
       text-decoration: none;
-      transition: background-color 0.3s, color 0.3s;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
-    #don a:hover {
-      background-color: #01796F;
+    .don-section a:hover {
+      background: #FFD700;
       color: white;
     }
 
+    /* --- Pied de page --- */
     footer {
-      background-color: #01796F;
-      color: white;
       text-align: center;
       padding: 20px;
-      border-radius: 15px 15px 0 0;
-      margin-top: 40px;
+      background: #01796F;
+      color: white;
+      border-top: 4px solid #FFD700;
     }
 
+    /* --- Responsive --- */
     @media (max-width: 768px) {
-      .navbar ul {
+      nav ul {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(0, 80, 70, 0.95);
         flex-direction: column;
-        background: rgba(255,255,255,0.95);
-        padding: 10px;
+        width: 200px;
+        display: none;
+        border-radius: 0 0 10px 10px;
       }
 
-      .navbar a {
-        display: block;
-        text-align: center;
+      nav ul.show {
+        display: flex;
       }
 
-      .gallery img {
-        width: 100%;
+      .menu-toggle {
+        display: flex;
       }
     }
   </style>
 </head>
 
 <body>
-
   <!-- Barre de navigation -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="#cultes" class="active">Nos cultes</a></li>
-      <li><a href="#membres">Nos membres</a></li>
+  <nav>
+    <div class="logo">CEP-ZOE Argenteuil</div>
+    <div class="menu-toggle" id="menu-toggle">
+      <div></div><div></div><div></div>
+    </div>
+    <ul id="nav-links">
+      <li><a href="#nos-cultes">Nos cultes</a></li>
+      <li><a href="#nos-membres">Nos membres</a></li>
       <li><a href="#messages">Messages</a></li>
       <li><a href="#nouveaux">Nouveaux croyants</a></li>
       <li><a href="#apropos">À propos</a></li>
@@ -200,40 +200,74 @@
     </ul>
   </nav>
 
-  <!-- Image d'en-tête -->
-  <div class="banner">
-    <img src="IMG_0311.jpeg" alt="Eglise CEP-ZOE d'Argenteuil">
-  </div>
-
-  <!-- En-tête principale -->
-  <header class="main-header">
-    <h1>Eglise CEP-ZOE d'Argenteuil</h1>
+  <!-- En-tête -->
+  <header>
+    <h1>CEP-ZOE Argenteuil</h1>
     <p>Mission internationale – Former et rassembler des disciples pour le royaume</p>
-    <p>2 Corinth 5 v 20</p>
   </header>
 
-  <!-- Contenu principal -->
   <div class="container">
-    <section> <div class="card" id="cultes"> <h3>Nos cultes</h3> <p>Découvrez nos rendez-vous hebdomadaires de prière et d’adoration.</p> <p>Notre Église est constamment en activité. Nous croyons à la croissance de nos membres par la prière, la connaissance de la parole et surtout l'assistance du Saint-Esprit. En temps ordinaire et en présentiel, nos services se déroulent à trois moments de la semaine : sous la forme de cultes d'adoration et de louanges le dimanche ou en veillée de nuit le vendredi soir et de jeûne de prière le mercredi matin. voir heure exacte dans la phto qui suit.</p> <img src="Nos horaires de cultes.png" alt="Photo du culte"> </div> <div class="card" id="membres"> <h3>Nos membres</h3> <p>Une famille spirituelle engagée et accueillante.</p> <p> Laissez venir à moi les petits enfenfants. Cette parole de Jésus-Christ en Matthieu 19.4 est la devise de notre système d'évangélisation. Nous croyons que tous êtres humains ont part à la maison de Dieu. Notre accueil est donc le même pour tous, venez comme vous êtes et notre père se chargera de ce qui aurait fait défaut.</p> <img src="IMG_0297.jpeg" alt="Photo des membres"> </div> <div class="card"> <h3>Le leader</h3> <p>Conduire par le service.</p> <p>Président de l'APHF, association des Pasteurs Haïtiens de France et de la mission Cep-Zoe, l'apôtre Adly est le leader principal de l'Église Cep Zoe d'Argenteuil. Marié en 2005 et père de trois enfants, il consacre sa vie en travaillant à temps plein pour le ministère. Adorateur, conférencier et écrivain, chaque détail de sa vie est un outil supplémentaire pour sa consécration dans le service.</p> <img src="IMG_0349.jpeg" alt="Notre église"> </div> <div class="card"> <h3>Nos ministères</h3> <p>Un regroupement d'adorateurs dans leur domaine de cœur.</p> <p>Chaque membre de l'Eglise Cep-Zoe d'Argenteuil a la possibilité d'intégrer un groupe et de grandir dans la foi. Pour cela nous vous orientons vers le groupe le plus approprié à votre statut. Les hommes, les femmes, les enfants, la musique.... Une infinité de portes reste ouverte, rien que pour voir votre foi s'enraciner un Dieu vivant et vrai, Notre Dieu.</p> <img src="IMG_0339.jpeg" alt="Photo des membres"> <img src="IMG_0331.jpeg" alt="Photo des membres"> <img src="IMG_0346.jpeg" alt="IMG_0346.jpeg"> <img src="media.jpg" alt="Photos des membres"> <img src="IMG_0338.jpeg" alt="IMG_0338.jpeg"> </div> <div class="card" id="messages"> <h3>Messages encourageants</h3> <p>Des enseignements et méditations pour votre foi.</p> <p>D'où vient le monde? Que se passe t-il après la mort? Puis-je être à nouveau moi-même après un avortement? Pourquoi j'ai parfois envie de me suicider? Pourrais je vraiment plaire à Dieu après avoir vécu longtemps dans la débauche? LA BIBLE, La bible a la réponse à toutes vos questions et nos préicateurs n'hésiteront pas à vous faire découvrir les quintessences de la parole du souverain créateur et maitre de l'univers. Nous pouvons vous amenez à entendre la réponse de Dieu et obtenir la délivrance.</p> <img src="IMG_0306.jpeg" alt="Message biblique"> </div> <div class="card" id="Nouveaux"> <h3>Nouveaux croyants</h3> <p>Accompagnement et formation pour grandir dans la foi.</p> <p>Ceux qui viennent à Christ s’engagent également dans un processus de maturité. Conscients de notre responsabilité chrétienne, nous ouvrons la porte de nos groupes de formations hebdomadaires à nos nouveaux membres. C'est l'occasion pour eux d'acquérir de la maturité tant sur le plan exégétique que pratique.</p> <p> Ils connaîtront la vérité et la vérité les affranchira. Jean 8.32</p> <img src="IMG_0314.jpeg" alt="Nouveaux croyants"> </div> <div class="card" id="apropos"> <h3>À propos de nous</h3> <p>Notre mission et nos valeurs au service du Royaume.</p> <p>Nous sommes une Eglise qui a pris naissance en juillet 2021 et depuis nous ne cessons de multiplier des ambassades du royaume dans le monde. En effet, l'Eglise CEP ZOE d'argenteuil est aujourd'hui l'assemblée centrale d'une mission regroupant des membres à Provins, à Gagny, en Haïtià la république Dominicaine etc...</p> <p>Nous croyons que la bible est la parole infaillible de Dieu aux hommes. Nouscroyons et adorons le seul vrai Dieu Unique existant en trois personnes: le père, le fils et le Saint-Esprit. Nous croyons que tout homme/femme peut être sauvé,peu importe son passé, son appartenance culturelle, sa couleur de peau, son origine.</p> <img src="logo de l'Eglise.jpg" alt="Notre église"> <div class="card" id="don"> </section> <!-- Section Faire un Don --> <section style=" text-align:center; background: linear-gradient(135deg, #01796F, #FFD700); color: white; padding: 40px 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 40px;"> <h2>Faire un Don</h2> <p style="max-width:700px; margin:0 auto 20px; font-size:1.1em;"> Votre contribution soutient les activités de l’Église et aide à propager la Parole de Dieu. Chaque don compte et participe à l’avancement du Royaume ! </p> <a href="https://bit.ly/40lkzL5" target="_blank" style=" display:inline-block; background-color:white; color:#01796F; padding:12px 25px; border-radius:8px; font-weight:bold; text-decoration:none; transition:background-color 0.3s, color 0.3s;"> Faire un Don </a> </section> <section> <h2>Galerie photos</h2> <p>Voici quelques moments forts de notre église :</p> <div class="gallery"> <img src="IMG_0337.jpeg" alt="Photo 1"> <img src="IMG_0348.jpeg" alt="Photo 2"> <img src="baptême.jpg" alt="Photo 3"> <img src="Onction apostoliques .jpg" alt="Photo 4"> </div> </section> <section> <div class="card" id="contact"> <h2>Contact</h2> <ul> <li><strong>Téléphone :</strong> 06 61 88 07 54</li> <li><strong>Email :</strong> <a href="mailto:secretariat.cepzoe@gmail.com">secretariat.cepzoe@gmail.com</a></li> <li><strong>Facebook :</strong> <a href="https://www.facebook.com/cepzoe95100" target="_blank">cep zoe</a></li> <li><strong>YouTube :</strong> <a href="https://youtube.com/@cepzoéofficiel" target="_blank">cep zoé officiel</a></li> <li><strong>TikTok :</strong> <a href="https://tiktok.com/@cepzoe_argenteuil" target="_blank">@cepzoe_argenteuil</a></li> </ul> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2622.214314251148!2d2.2195980768220055!3d48.94780827134812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e665f6f81ec78f%3A0x4fbe1cfb08a6c017!2s69%20Rue%20Henri%20Barbusse%2C%2095100%20Argenteuil!5e0!3m2!1sfr!2sfr!4v1728064764000!5m2!1sfr!2sfr" width="100%" height="350" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"> </iframe> </section> </div>
-
-    <!-- Section Faire un Don -->
-    <section id="don">
-      <h2>Faire un Don</h2>
-      <p>Votre contribution soutient les activités de l’Église et aide à propager la Parole de Dieu. 
-      Chaque don compte et participe à l’avancement du Royaume !</p>
-      <a href="https://bit.ly/40lkzL5" target="_blank">Faire un Don</a>
+    <section id="nos-cultes">
+      <h2>Nos cultes</h2>
+      <p>Découvrez nos rendez-vous hebdomadaires de prière et d’adoration.</p>
     </section>
 
-    <!-- ... reste du code inchangé -->
+    <section id="nos-membres">
+      <h2>Nos membres</h2>
+      <p>Une famille spirituelle engagée et accueillante.</p>
+    </section>
+
+    <section id="messages">
+      <h2>Messages encourageants</h2>
+      <p>Des enseignements et méditations pour votre foi.</p>
+    </section>
+
+    <section id="nouveaux">
+      <h2>Nouveaux croyants</h2>
+      <p>Accompagnement et formation pour grandir dans la foi.</p>
+    </section>
+
+    <section id="apropos">
+      <h2>À propos</h2>
+      <p>Notre mission et nos valeurs au service du Royaume.</p>
+    </section>
+
+    <section id="don" class="don-section">
+      <h2>Faire un don</h2>
+      <p>Votre soutien nous aide à poursuivre notre mission.</p>
+      <a href="https://bit.ly/40lkzL5" target="_blank">Faire un don maintenant</a>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p><strong>Téléphone :</strong> 06 61 88 07 54</p>
+      <p><strong>Email :</strong> <a href="mailto:secretariat.cepzoe@gmail.com">secretariat.cepzoe@gmail.com</a></p>
+    </section>
   </div>
 
   <footer>
-    © <span id="year"></span> Eglise CEP-ZOE d'Argenteuil — Tous droits réservés
+    © <span id="year"></span> CEP-ZOE Argenteuil — Tous droits réservés
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 
+    // --- Menu mobile ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // --- Activer le lien cliqué ---
+    const links = document.querySelectorAll('nav ul li a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        navLinks.classList.remove('show'); // ferme le menu mobile après clic
+      });
+    });
+  </script>
 </body>
 </html>
